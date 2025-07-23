@@ -1,0 +1,4 @@
+openai:
+  base_url: "http://172.16.16.60:48801/v1"
+  api_key: "sk-7zbsLvBVoQkBSysPUPgePV41Emjs6Q9ddgcOHfdmz2DYtzGT"
+  timeout: 120.0

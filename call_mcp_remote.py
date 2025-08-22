@@ -98,7 +98,7 @@ class MCPClient:
         try:
             logger.info(f"请求参数 - messages: {messages}, tools: {available_tools}")
             response = client.chat.completions.create(
-                model="moonshot-v1-8k",
+                model=config["openai"]["model"],
                 messages=messages,
                 tools=available_tools
             )

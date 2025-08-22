@@ -3,8 +3,7 @@ FROM python:3.12-slim-bookworm
 # Set the working directory
 WORKDIR /app
 
-RUN export http_proxy=http://172.21.122.93:3128 && export https_proxy=http://172.21.122.93:3128 && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get install -y curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*

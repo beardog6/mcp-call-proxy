@@ -90,15 +90,20 @@ class MCPClient:
             } for tool in tools])
 
         
+        model = config["openai"]["model"]
+        base_url = config["openai"]["base_url"]
+        api_key = config["openai"]["api_key"]
+        timeout = config["openai"]["timeout"]
         client = OpenAI(
-            base_url=config["openai"]["base_url"],
-            api_key=config["openai"]["api_key"],
-            timeout=config["openai"]["timeout"]
+            base_url=base_url,
+            api_key=api_key,
+            timeout=timeout
         )
+        logger.info(f"baseurl: {base_url}, model: {model}, timeout: {timeout}")
         try:
             logger.info(f"请求参数 - messages: {messages}, tools: {available_tools}")
             response = client.chat.completions.create(
-                model=config["openai"]["model"],
+                model=model,
                 messages=messages,
                 tools=available_tools
             )
@@ -165,7 +170,7 @@ class MCPClient:
             logger.info(f"\nllm req:{messages}")
             # Get next response from OpenAI
             response = client.chat.completions.create(
-                model="moonshot-v1-8k",
+                model=model,
                 messages=messages,
                 tools=available_tools
             )
